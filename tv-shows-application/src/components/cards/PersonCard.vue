@@ -13,6 +13,8 @@ export default {
   name: "PersonCard",
   props: {
     artist: {}
-  }
+  },
 };
 </script>
+
+

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="show">
     <v-tooltip bottom dark max-width="500">
       <template v-slot:activator="{ on }">
         <v-card class="ma-1" height="170" width="170" @click="viewDetails(show.id)" v-on="on">
@@ -44,3 +44,6 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+</style>

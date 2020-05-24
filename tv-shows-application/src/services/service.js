@@ -1,13 +1,16 @@
 import axios from "axios"
 
-export function getShowById(id){
+//Function to get details of a particular show by sending id
+export const getShowById= (id)=>{
     return axios.get(`http://api.tvmaze.com/shows/${id}?embed[]=episodes&embed[]=cast&embed[]=crew&embed[]=images`);
 }
 
-export function getShowsByName(name){
+//Function to get details of relevant shows matching a keyword
+export const getShowsByName=(name)=>{
     return axios.get(`http://api.tvmaze.com/search/shows?q=${name}`);
 }
 
-export function getAllShows(){
+//Function to get details of all shows
+export const getAllShows=()=>{
     return axios.get("http://api.tvmaze.com/shows");
 }

@@ -17,7 +17,7 @@
 <script>
 import ShowCard from "../cards/ShowCard";
 export default {
-  name: "CComp",
+  name: "Slide",
   components: {
     ShowCard
   },
@@ -29,11 +29,6 @@ export default {
   props: {
     list: Array,
     genre: String
-  },
-  methods: {
-    viewDetails(id) {
-      this.$router.push({ name: "Show", params: { id: id } });
-    }
   }
 };
 </script>

@@ -13,6 +13,7 @@
           dark
           placeholder="Enter keyword here..."
           v-model="keyword"
+          data-test="search-key"
         />
       </v-row>
     </v-card>
@@ -43,7 +44,7 @@ export default {
   watch: {
     async keyword() {
       await getShowsByName(this.keyword).then(
-        res => (this.searchInfo = res.data)
+        res => (this.searchInfo = res.data).catch()
       );
     }
   }

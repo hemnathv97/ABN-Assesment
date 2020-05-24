@@ -1,30 +1,7 @@
 <template>
   <div class="ma-5">
     <v-container>
-      <v-row class="fill-height white--text" align="center" justify="center">
-        <v-col sm="4">
-          <v-img v-if="showInfo.image!=null" :src="showInfo.image.original" height="400" contain />
-          <v-img v-else :src="require('../assets/show-photo-default.jpeg')" height="400" contain />
-        </v-col>
-
-        <v-col sm="6">
-          <div class="display-2">{{showInfo.name}}</div>
-          <div class="caption mt-4" v-html="showInfo.summary"></div>
-          <div class="headline ma-3">
-            Rating :
-            <span v-if="showInfo.rating!=null">{{showInfo.rating.average}}</span>
-            <span v-else>Not Available</span>
-            <v-icon color="white">mdi-star</v-icon>
-          </div>
-          <v-chip-group column>
-            <v-chip v-for="genre in showInfo.genres" :key="genre">
-              <v-icon small left>mdi-map-marker</v-icon>
-              {{ genre }}
-            </v-chip>
-          </v-chip-group>
-        </v-col>
-      </v-row>
-
+      <show-overview :show="showInfo" />
       <v-row class="mt-5">
         <v-tabs background-color="teal darken-4" class="elevation-2" dark :centered="true">
           <v-tab>Episodes</v-tab>
@@ -48,7 +25,6 @@
               </v-simple-table>
             </v-card>
           </v-tab-item>
-
           <v-tab>Cast</v-tab>
           <v-tab-item>
             <v-layout justify-center class="pa-10" wrap>
@@ -63,7 +39,6 @@
               </v-flex>
             </v-layout>
           </v-tab-item>
-
           <v-tab>Crew</v-tab>
           <v-tab-item>
             <v-layout justify-center class="pa-10" wrap>
@@ -81,12 +56,7 @@
           <v-tab>Gallery</v-tab>
           <v-tab-item>
             <v-layout justify-center class="pa-5" wrap>
-              <v-flex 
-              md2 
-              class="ma-3" 
-              v-for="(image,index) in images" 
-              :key="index"
-              >
+              <v-flex md2 class="ma-3" v-for="(image,index) in images" :key="index">
                 <image-card :image="image" />
               </v-flex>
             </v-layout>
@@ -101,11 +71,13 @@
 import { getShowById } from "../services/service";
 import PersonCard from "../components/cards/PersonCard";
 import ImageCard from "../components/cards/ImageCard";
+import ShowOverview from "../components/dashboard-components/ShowOverview";
 export default {
   name: "ShowDetails",
   components: {
     PersonCard,
-    ImageCard
+    ImageCard,
+    ShowOverview
   },
   data() {
     return {
@@ -117,12 +89,19 @@ export default {
       images: []
     };
   },
-  async created() {
-    await getShowById(this.id).then(res => (this.showInfo = res.data));
-    this.episodes = this.showInfo._embedded.episodes;
-    this.cast = this.showInfo._embedded.cast;
-    this.crew = this.showInfo._embedded.crew;
-    this.images = this.showInfo._embedded.images;
+  methods: {
+    async initialize() {
+      await getShowById(this.id)
+        .then(res => (this.showInfo = res.data))
+        .catch();
+      this.episodes = this.showInfo._embedded.episodes;
+      this.cast = this.showInfo._embedded.cast;
+      this.crew = this.showInfo._embedded.crew;
+      this.images = this.showInfo._embedded.images;
+    }
+  },
+  created() {
+    this.initialize();
   }
 };
 </script>

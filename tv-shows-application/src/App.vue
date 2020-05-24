@@ -3,11 +3,9 @@
     <header>
       <app-header />
     </header>
-
     <v-content class="grey darken-4">
       <router-view />
     </v-content>
-
     <footer>
       <app-footer />
     </footer>
