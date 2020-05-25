@@ -63,8 +63,8 @@ npm run lint
    variable, object declaration : camelCase
    Example : showInfo, viewDetails() etc..
 
-2) Folder, Js files Naming Convention: kabab-case
-   Example : header, cards, index.js
+2) Js files, folder Naming Convention: kabab-case
+   Example : header, cards
 
 3) Vue files Naming Convention, component names : PascalCase
    Example : AppHeader.vue 
