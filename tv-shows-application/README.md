@@ -61,12 +61,12 @@ npm run lint
 
 1) Method Naming Convention, 
    variable, object declaration : camelCase
-   Example : mealDetails, searchMeal() etc..
+   Example : showInfo, viewDetails() etc..
 
-2) Folder Naming Convention: kabab-case
-   Example : header, cards
+2) Folder, Js files Naming Convention: kabab-case
+   Example : header, cards, index.js
 
-3) File Naming Convention, component names : PascalCase
+3) Vue files Naming Convention, component names : PascalCase
    Example : AppHeader.vue 
  
 
