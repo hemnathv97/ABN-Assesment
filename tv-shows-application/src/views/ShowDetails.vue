@@ -94,6 +94,9 @@ export default {
       await getShowById(this.id)
         .then(res => (this.showInfo = res.data))
         .catch();
+      this.showData();
+    },
+    showData(){
       this.episodes = this.showInfo._embedded.episodes;
       this.cast = this.showInfo._embedded.cast;
       this.crew = this.showInfo._embedded.crew;

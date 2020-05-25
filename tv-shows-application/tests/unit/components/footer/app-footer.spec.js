@@ -1,14 +1,12 @@
 import { shallowMount } from "@vue/test-utils";
 import Vue from "vue";
 import Vuetify from "vuetify";
-import VueRouter from "vue-router";
 import AppFooter from "../../../../src/components/footer/AppFooter.vue";
 
 describe("In AppFooter Component", () => {
     let appFooterWrapper;
     beforeEach(() => {
         Vue.use(Vuetify);
-        Vue.use(VueRouter);
         appFooterWrapper = shallowMount(AppFooter, {
             Vue,
         });

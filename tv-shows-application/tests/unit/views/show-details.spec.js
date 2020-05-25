@@ -1,30 +1,25 @@
 import { shallowMount } from "@vue/test-utils";
 import Vue from "vue";
 import Vuetify from "vuetify";
-// import VueRouter from "vue-router";
 import ShowDetails from "../../../src/views/ShowDetails.vue"
 import PersonCard from "../../../src/components/cards/PersonCard.vue";
 import ImageCard from "../../../src/components/cards/ImageCard.vue";
-import VueRouter from "vue-router";
 
 
 describe("In ShowDetails Component", () => {
     let showDetailsWrapper;
     beforeEach(() => {
         Vue.use(Vuetify);
-        // Vue.use(VueRouter);
         showDetailsWrapper = shallowMount(ShowDetails, {
             Vue,
             mocks: {
                 $route: {
-                  params: { "id":"169" },
-                }},
-                // methods:{
-                //     initialize: jest.fn()
-                // },
+                    params: { "id": "169" },
+                }
+            },
             data() {
                 return {
-                    id:"",
+                    id: "",
                     showInfo: {
                         "id": 169,
                         "name": "Breaking Bad",
@@ -91,6 +86,29 @@ describe("In ShowDetails Component", () => {
         expect(ImageCard).toBeTruthy();
     });
 
+    it("initialize function should be called on create", async () => {
+        const spyinit = jest.spyOn(showDetailsWrapper.vm, "initialize");
+        setTimeout(() => {
+            expect(spyinit).toHaveBeenCalled();
+            expect(showDetailsWrapper.vm.initialize).toHaveBeenCalled();
+            expect(showDetailsWrapper.vm.showData).toHaveBeenCalled();
+        });
+
+    });
+    it("it should assign values to variable episodes,cast,crew and images",()=>{
+        let expected1 = ["episode"];
+        let expected2 = ["cast"];
+        let expected3 = ["crew"];
+        let expected4 = ["images"];
+        showDetailsWrapper.vm.showInfo={_embedded:{episodes:["episode"],cast:["cast"],crew:["crew"],images:["images"]}};
+        showDetailsWrapper.vm.showData();
+        expect(showDetailsWrapper.vm.episodes).toEqual(expected1);
+        expect(showDetailsWrapper.vm.cast).toEqual(expected2);
+        expect(showDetailsWrapper.vm.crew).toEqual(expected3);
+        expect(showDetailsWrapper.vm.images).toEqual(expected4);
+    });
+    
+
     it("it should have a container", () => {
         expect(showDetailsWrapper.html()).toContain("v-container");
     });
@@ -135,8 +153,4 @@ describe("In ShowDetails Component", () => {
     it("it should have a <v-flex-stub></v-flex-stub>", () => {
         expect(showDetailsWrapper.html()).toContain("v-flex");
     });
- 
-
 });
-
-    

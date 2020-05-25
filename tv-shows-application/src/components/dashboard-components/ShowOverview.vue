@@ -7,7 +7,7 @@
     <v-col sm="6">
       <div class="display-2">{{show.name}}</div>
       <div class="caption mt-4" v-html="show.summary"></div>
-      <div class="headline ma-3">
+      <div v-if="show.rating" class="headline ma-3">
         Rating : {{show.rating.average}}
         <v-icon dark>mdi-star</v-icon>
       </div>

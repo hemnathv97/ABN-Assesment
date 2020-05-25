@@ -11,7 +11,6 @@ describe("In Carousel Component", () => {
 
     beforeEach(() => {
         Vue.use(Vuetify);
-        // Vue.use(VueRouter);
         carouselWrapper = shallowMount(Carousel, {
             Vue,
             router,

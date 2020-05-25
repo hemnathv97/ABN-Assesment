@@ -64,6 +64,3 @@ data(){
 
 }
 </script>
-
-<style scoped>
-</style>

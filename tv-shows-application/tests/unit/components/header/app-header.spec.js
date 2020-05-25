@@ -24,7 +24,6 @@ describe("In AppHeader Component", () => {
         expect(appHeaderWrapper.isVueInstance).toBeTruthy();
     });
 
-
     it("it should have a <v-app-bar></v-app-bar>", () => {
         expect(appHeaderWrapper.html()).toContain("v-app-bar");
     });

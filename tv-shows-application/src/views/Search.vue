@@ -44,8 +44,8 @@ export default {
   watch: {
     async keyword() {
       await getShowsByName(this.keyword).then(
-        res => (this.searchInfo = res.data).catch()
-      );
+        res => (this.searchInfo = res.data)
+      ).catch();
     }
   }
 };
