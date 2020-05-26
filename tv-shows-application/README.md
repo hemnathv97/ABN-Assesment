@@ -3,8 +3,8 @@ This web application which allows users to get details of their favourite TV-sho
 use of open api: https://www.tvmaze.com/api.php to get the relevent data from the server.
 On the Home page, it loads top rated shows ordered with repect to some of the popular genres . The user can 
 use the search option to search for any particular show. On clicking the desired show, the user can view 
-the details pertending to the particular show
-The details of that meal show:
+the details pertending to the particular show.
+The details of that show:
 • Overview : name, poster, language, genres, rating and summary of the show
 • Episodes : season, number, name and air-date of the episodes
 • Cast : photo, name of the artist, name of the caharacter 
